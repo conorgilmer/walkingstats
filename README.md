@@ -1,0 +1,2 @@
+# walkingstats
+Stats from walking
