@@ -1,0 +1,37 @@
+
+<?php if (isset($flashMessage) && strlen(trim($flashMessage)) > 0 ) : ?>
+<div class="alert">
+	<button type="button" class="close" data-dismiss="alert"></button>
+	<strong>Message</strong>
+	<?php echo $flashMessage ?>
+</div>
+
+<?php endif;  ?>
+<form class="form-horizontal" method="post" action="insertroute.php" enctype="multipart/form-data" >
+	<input type="hidden" name="id"
+		value="<?php echo $product['id']; ?>" />
+	<div class="control-group">
+		<label class="control-label" for="inputproductTitle">Name</label>
+		<div class="controls">
+			<input type="text" id="inputproduct Name" name="name"
+				placeholder="Name" value="<?php echo $product['name']; ?>">
+		</div>
+                	<label class="control-label" for="inputproductTitle">Date</label>
+		<div class="controls">
+			<input type="text" id="inputproductDate" name="date"
+				placeholder="Date" value="<?php echo $product['date']; ?>">
+		</div>
+                
+	</div>
+
+	<div class="control-group">
+		<div class="controls">
+
+			<button type="submit" class="btn">
+				<?php echo $buttonLabel ?>
+			</button>
+		</div>
+	</div>
+</form>
+
+
