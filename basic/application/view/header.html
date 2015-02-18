@@ -5,29 +5,18 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title></title>
 
-
  <!-- Bootstrap -->
 <link href="library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="library/bootstrap/css/bootstrap.css" type="text/css"/>
+ <link href="library/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="screen">
 
-
-    
      
      <style>
       body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      	
-        	
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */     	
       }
     </style>  
-    
-  
-    
-    
-    
-    
-    
-    
-    
+     
     
 </head>
 <body>
@@ -46,8 +35,26 @@
               <li class="<?php echo $activeHome ?>"><a href="admin.php">Home</a></li>
               <li  class=""><a href="listwalks.php">Walks</a></li>
               <li  class="<?php echo $activeInsert ?>"><a href="insert.php">Insert Walk</a></li>
-              <li  class=""><a href="listroutes.php">Routes</a></li>
+                    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Routes<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+         <li  class=""><a href="listroutes.php">List Routes</a></li>
               <li  class=""><a href="insertroute.php">Insert Route</a></li>                          
+        </ul>
+      </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Graph<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li> <a href="graphkm.php">Line Graph Distance</a></li>
+                  <li> <a href="graphmin.php">Line Graph Time</a></li>
+                  <li> <a href="graphkmbar.php">Bar Graph Distance</a></li>
+                  <li> <a href="graphminbar.php">Bar Graph Time</a></li>
+   
+                </ul>
+              </li>            
+               <li  class=""><a href="exportToCSV.php">Export To CSV</a></li>                          
+               
+              
               
               <li  class=""><a href="logout.php">Logout</a></li> 
               
