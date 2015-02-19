@@ -1,0 +1,99 @@
+
+<?php if (isset($flashMessage) && strlen(trim($flashMessage)) > 0 ) : ?>
+<div class="alert">
+	<button type="button" class="close" data-dismiss="alert"></button>
+	<strong>Message</strong>
+	<?php echo $flashMessage ?>
+</div>
+
+<?php endif;  ?>
+<form class="form-horizontal" method="post" action="insert.php" enctype="multipart/form-data" >
+	<input type="hidden" name="id"
+		value="<?php echo $product['id']; ?>" />
+	<div class="control-group">
+		<label class="control-label" for="inputMinutes">Time in Minutes</label>
+		<div class="controls">
+			<input type="text" id="inputMinutes" name="minutes"
+				placeholder="Minutes" value="<?php echo $product['minutes']; ?>">
+		</div>
+	</div>
+        	<div class="control-group">
+		<label class="control-label" for="inputDistance">Distance in KM</label>
+		<div class="controls">
+			<input type="text" id="inputDistance" name="distance_km"
+				placeholder="Distance" value="<?php echo $product['distance_km']; ?>">
+		</div>
+	</div>
+
+        
+
+	<div class="control-group">
+		<label class="control-label" for="inputDescription">Description</label>
+		<div class="controls">
+			<textarea name="description">
+  <?php echo $product['description']; ?>
+  
+  </textarea>
+		</div>
+	</div>
+
+
+	<div class="control-group">
+		<label class="control-label" for="inputaddedBy">Added by</label>
+		<div class="controls">
+			<input type="text" id="addedBy" name="addedby"
+				placeholder="AddedBy"
+				value="<?php echo $product['addedby']; ?>">
+                        
+		</div>
+	</div>
+
+        
+	<div class="control-group">
+		<label class="control-label" for="inputRoute">Route</label>
+		<div class="controls">
+			<?php 
+				$records = route_get_all();
+	
+				$arrayItems=array();
+
+				$count = sizeof($records);
+				for($i=0; $i < $count; $i++) {
+
+				$arrayItems[$i]["label"]=$records[$i]['name'];
+				$arrayItems[$i]["id"]=$records[$i]['id'];
+	
+
+				}
+
+
+echo uihelperSelect('place',$arrayItems,$product['place']) ?>
+		</div>
+	</div>
+        
+	</div>
+        	<div class="control-group">
+		<label class="control-label" for="inputDate">Date</label>
+		<div class="controls">
+			<input type="text" id="inputDistance" name="date"
+				placeholder="Date(yyyy-mm-dd)" value="<?php echo $product['date']; ?>">
+		</div>
+	</div>
+
+
+
+
+
+<div class="control-group">
+		<div class="controls">
+
+			<button type="submit" class="btn">
+				<?php echo $buttonLabel ?>
+			</button>
+		</div>
+	</div>
+</form>
+
+
+
+
