@@ -2,6 +2,15 @@
 session_start();
 
 require("fpdf.php");
+/*
+ * Include the config.inc.php file
+ */
+define ( "MY_APP", 1 );
+define ( "APPLICATION_PATH", "application");
+include_once(APPLICATION_PATH . "/inc/session.inc.php");
+include (APPLICATION_PATH . "/inc/config.inc.php");
+include (APPLICATION_PATH . "/inc/db.inc.php");
+include (APPLICATION_PATH . "/inc/functions.inc.php");
 
 class PDF extends FPDF
 {
@@ -41,6 +50,33 @@ function LoadData($file)
     return $data;
 } /* end of load data */
 
+// Load data
+// reading from a file - change to mysql..
+function LoadDBData($file)
+{
+    // Read file lines
+  //  $lines = file($file);
+    $data = array();
+     
+
+$sqlQuery = "SELECT * FROM walks";
+$result = mysql_query($sqlQuery);
+
+//$data = array();
+if ($result) {
+	
+	while ($product = mysql_fetch_assoc($result))
+	{
+            $data[] = $product;
+       //     print_r($product);
+        }
+}
+    
+ //   foreach($lines as $line)
+   //     $data[] = explode(',',trim($line));
+    return $data;
+} /* end of load data */
+
 // Simple table
 function BasicTable($header, $data)
 {
@@ -72,8 +108,8 @@ function ImprovedTable($header, $data)
     {   $num++; // since $row[0] is not contigious 
         $this->Cell($w[0],6,$num,'LR', 0,'C');
 //        $this->Cell($w[1],6,$row[1],'LR');
-       // print_r($row);
-       // print("<br>");
+        print_r($row);
+        print("<br>");
         $this->Cell($w[1],6,(int)$row[1],'LR', 0, 'C');  
         $this->Cell($w[2],6,number_format((double)$row[2], 2,'.',''),'LR',0,'C');
         $this->Cell($w[3],6,number_format((double)$row[3], 3,'.',''),'LR',0,'C');
@@ -84,6 +120,36 @@ function ImprovedTable($header, $data)
     // Closing line
     $this->Cell(array_sum($w),0,'','T');
 } /* end of improved table */
+
+// Better table
+function ImprovedWalkTable($header, $data)
+{
+    // Column widths
+    $w = array(40, 35, 40, 45);
+    // Header
+    for($i=0;$i<count($header);$i++){
+    $this->Cell($w[$i],7,$header[$i],1,0,'C');}
+    $this->Ln();
+    $num =0;
+    // Data
+    foreach($data as $row)
+    {   $num++; // since $row[0] is not contigious 
+        $this->Cell($w[0],6,$num,'LR', 0,'C');
+//        $this->Cell($w[1],6,$row[1],'LR');
+       //print_r($row);
+       // print("<br>");
+        $this->Cell($w[1],6,(int)$row['minutes'],'LR', 0, 'C');  
+        $this->Cell($w[2],6,number_format((double)$row['distance_km'], 2,'.',''),'LR',0,'C');
+        $this->Cell($w[3],6,number_format((double)$row['speed'], 3,'.',''),'LR',0,'C');
+     //   $this->Cell($w[4],6,$row[4],'LR',0,'C');
+      
+        $this->Ln();
+    }
+    // Closing line
+    $this->Cell(array_sum($w),0,'','T');
+} /* end of improved table */
+
+
 
 // Colored table
 function FancyTable($header, $data)
@@ -126,12 +192,12 @@ $pdf = new PDF('P','mm','A4'); //l forlandscape default is portrait P
 //$header = array('Country', 'Capital', 'Area (sq km)', 'Pop. (thousands)');
 $header = array('No.','Minutes','Distance(km)','Speed(km/min)');//,'place','desc','date','addedby');
 // Data loading
-$data = $pdf->LoadData('export.csv');
+$data = $pdf->LoadDBData('export.csv');
 $pdf->SetFont('Arial','',14);
 //$pdf->AddPage();
 //$pdf->BasicTable($header,$data);
 $pdf->AddPage();
-$pdf->ImprovedTable($header,$data);
+$pdf->ImprovedWalkTable($header,$data);
 //$pdf->AddPage();
 //$pdf->FancyTable($header,$data);
 $pdf->Output();
