@@ -7,11 +7,11 @@ The basic app does
 + Walk can up added, updated and deleted
 + List Walks (various ways)
 + Walk can up added, updated and deleted
-+ Display statistics
++ Display statistics (graphs using http://phpmygraph.abisvmm.nl/)
   + Time - line and bar charte
   + Distance - line and bar chart
   + Speed
-+ Print Report (PDF) - To Do
++ Print Report (PDF) - using www.fpdf.org
 + Import CSV to mysql - commandline/browser no gui
 + Export CSV
 + logout fn
