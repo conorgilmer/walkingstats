@@ -13,7 +13,7 @@ function validateproduct($product) {
 	return true;
 	
 	
-}
+} /* end of validate product - need to put more in here*/
 
 // get the route name
 function getRoute($r_id ) {
@@ -31,7 +31,66 @@ function getRoute($r_id ) {
         $ret = mysql_fetch_array($result);
 	return $ret['name'];
 	
-}
+} /* end of getRoute */
+
+// save a walk
+function saveWalk($walk ) {
+        
+        $addeddate = date("Y-m-d", strtotime($walk['date']));
+        //die($addeddate);
+        $speed = ((float)$walk['distance_km']) / ((float)$walk['minutes']);
+	$sqlQuery = "INSERT INTO walks (id, minutes, distance_km, speed, place, description, date, addedby)
+        values ('', '{$walk['minutes']}', '{$walk['distance_km']}','{$speed}','{$walk['place']}',
+            '{$walk['description']}', '{$addeddate}', '{$walk['addedby']}')";
+	
+	$result = mysql_query($sqlQuery);
+
+	if (!$result) {
+		echo $sqlQuery;
+		
+		die("error" . mysql_error());
+	} 
+	//comment in	
+	return mysql_insert_id();
+	
+} /* end of save walk */
+
+// update save a walk
+function updateWalk($walk ) {
+        
+        $addeddate = date("Y-m-d", strtotime($walk['date']));
+        //die($addeddate);
+        $speed = ((float)$walk['distance_km']) / ((float)$walk['minutes']);
+	/*$sqlQuery = "INSERT INTO walks (id, minutes, distance_km, speed, place, description, date, addedby)
+        values ('', '{$walk['minutes']}', '{$walk['distance_km']}','{$speed}','{$walk['place']}',
+            '{$walk['description']}', '{$addeddate}', '{$walk['addedby']}')";
+	*/
+        
+        $walkID = (int) $walk['id'];
+        $sqlQuery = "UPDATE walks SET ";
+        $sqlQuery .= " minutes = '". $walk['minutes'] . "'";
+        $sqlQuery .= ", distance_km = '". $walk['distance_km'] . "'";
+        $sqlQuery .= ", speed = '". $speed . "'";
+        $sqlQuery .= ", place = '". $walk['place'] . "'";
+        $sqlQuery .= ", description = '". $walk['description'] . "'";
+        $sqlQuery .= ", date = '". $addeddate . "'";
+        $sqlQuery .= ", addedby = '". $walk['addedby'] . "'";
+        $sqlQuery .= " WHERE id = $walkID";
+        
+        
+        
+	$result = mysql_query($sqlQuery);
+
+	if (!$result) {
+		echo $sqlQuery;
+		
+		die("error" . mysql_error());
+	} 
+	//comment in	
+	return mysql_insert_id();
+	
+} /* end of update walk */
+
 
 // save a route
 function saveRoute($route ) {
@@ -51,7 +110,7 @@ function saveRoute($route ) {
 	//comment in	
 	return mysql_insert_id();
 	
-}
+} /* end of save Route */
 
 //update route
 function updateRoute($product) {
@@ -71,7 +130,7 @@ function updateRoute($product) {
 	if (!$result) {
 		die("error" . mysql_error());
         }
-}
+} /* end of updateRoute */
 
 // delete route
 function deleteRoute($id) {
@@ -82,7 +141,7 @@ function deleteRoute($id) {
     if (!$result) {
 		die("error" . mysql_error());
         }
-}
+} /* end of delete route */
 
 
 // delete walk
@@ -94,36 +153,46 @@ function deleteWalk($id) {
     if (!$result) {
 		die("error" . mysql_error());
         }
-}
+} /* end of delete Walk */
+
+
+// return the route details
+function retrieveWalk($id) {
+
+	$sqlQuery = "SELECT * from walks WHERE id = $id";
+	$result = mysql_query($sqlQuery);
+	if(!$result) die("error" . mysql_error());
+	
+	return mysql_fetch_assoc($result);
+	
+} /* end fo retrieve walk */
 
 
 // return the route details
 function retrieveRoute($id) {
 
 	$sqlQuery = "SELECT * from places WHERE id = $id";
-       // die($sqlQuery);
-	$result = mysql_query($sqlQuery);
-	//print_r($result);
-	if(!$result) die("error" . mysql_error());
+       
+        $result = mysql_query($sqlQuery);
 	
-	//echo $sqlQuery;
+        if(!$result) die("error" . mysql_error());
+	
 	return mysql_fetch_assoc($result);
 	
-}
+} /* end of retrieve route details */
 
 
 function output_edit_link($id) {
 	
-	return "<a href='edit.php?id=$id'>Edit</a>";
+	return "<a href='edit.php?id=$id'>Edit</a>";	
 	
-	
-}
+} /* end of build output edit walk link */
+
 function output_delete_link($id) {
 
 	return "<a href='delete.php?id=$id'>Delete</a>";
 
-
-}
+} /* end of build output delete walk link */
 
 //edit places
 
@@ -131,15 +200,15 @@ function output_edit_route_link($id) {
 	
 	return "<a href='editroute.php?id=$id'>Edit</a>";
 	
-	
-}
+} /* end of build output edit route link */
+
 function output_delete_route_link($id) {
 //
 	return "<a href='deleteroute.php?id=$id'>Delete</a>";
 
-}
+} /* end of build output delete route link */
 
-
+// build options selected html
 function output_selected($currentValue, $valueToMatch) {
 	
 	
@@ -148,8 +217,9 @@ function output_selected($currentValue, $valueToMatch) {
 		return "selected ='selected'";
 		
 	}	
-}
+} /* end of build selected options menu */
 
+// authenticate login funciton
 function authenticate($username, $password) {   
     $boolAuthenticated = false;
     
@@ -167,7 +237,8 @@ function authenticate($username, $password) {
     }
     
     return $boolAuthenticated;
-}
+    
+} /* login user authenticate */
 
 
 function writeCSV ($table){
