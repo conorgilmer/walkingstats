@@ -23,7 +23,7 @@ function Header()
     //Move to the right
     $this->Cell(80);
     //Framed title frame set to 0 so no frame
-    $this->Cell(30,10,'Walk tracker',0,0,'C');
+    $this->Cell(30,10,'Walk Tracker',0,0,'C');
     //Line break
     $this->Ln(20);
 }    /* header fn */
@@ -52,14 +52,14 @@ function LoadData($file)
 
 // Load data
 // reading from a file - change to mysql..
-function LoadDBData($file)
+function LoadDBData($table)
 {
     // Read file lines
   //  $lines = file($file);
     $data = array();
      
 
-$sqlQuery = "SELECT * FROM walks";
+$sqlQuery = "SELECT * FROM $table";
 $result = mysql_query($sqlQuery);
 
 //$data = array();
@@ -125,8 +125,9 @@ function ImprovedTable($header, $data)
 function ImprovedWalkTable($header, $data)
 {
     // Column widths
-    $w = array(40, 35, 40, 45);
+    $w = array(20, 35, 40, 40,40);
     // Header
+//    print_r($header);
     for($i=0;$i<count($header);$i++){
     $this->Cell($w[$i],7,$header[$i],1,0,'C');}
     $this->Ln();
@@ -136,15 +137,108 @@ function ImprovedWalkTable($header, $data)
     {   $num++; // since $row[0] is not contigious 
         $this->Cell($w[0],6,$num,'LR', 0,'C');
 //        $this->Cell($w[1],6,$row[1],'LR');
-       //print_r($row);
-       // print("<br>");
         $this->Cell($w[1],6,(int)$row['minutes'],'LR', 0, 'C');  
         $this->Cell($w[2],6,number_format((double)$row['distance_km'], 2,'.',''),'LR',0,'C');
         $this->Cell($w[3],6,number_format((double)$row['speed'], 3,'.',''),'LR',0,'C');
-     //   $this->Cell($w[4],6,$row[4],'LR',0,'C');
+        $this->Cell($w[4],6,$row['date'],'LR',0,'C');
       
         $this->Ln();
     }
+    // Closing line
+    $this->Cell(array_sum($w),0,'','T');
+} /* end of improved table */
+
+// Better table
+function ImprovedWalkReportTable($header, $data)
+{
+    // Column widths
+    $w = array(40, 35, 40,50);
+    // Header
+//    print_r($header);
+    $this->Text(10, 100, "Statistics from the walks database table");
+    for($i=0;$i<count($header);$i++){
+    $this->Cell($w[$i],7,$header[$i],1,0,'C');}
+    $this->Ln();
+    $num =0;
+    $tot_time =0;
+    $tot_distance = 0;
+    $tot_speed =0;
+    $min_speed    = 10.0;
+    $min_distance = 10.0;
+    $min_time     = 100.0;
+    $max_speed    = 0.0;
+    $max_distance = 0.0;
+    $max_time     = 0.0;
+    
+    // Data
+    foreach($data as $row)
+    {   $num++; // since $row[0] is not contigious 
+    
+          $tot_time = $tot_time + (double)$row['minutes'];        
+          $tot_distance = $tot_distance + (double)$row['distance_km'];
+          $tot_speed = $tot_speed + (double)$row['speed'];
+          $max_distance = ((float)$row["distance_km"] > $max_distance ? (float)$row["distance_km"] : $max_distance);
+          $max_time  = ((float)$row["minutes"] > $max_time ? (float)$row["minutes"] : $max_time);
+          $max_speed  = ((float)$row["speed"] > $max_speed ? (float)$row["speed"] : $max_speed);
+          $min_distance = ((float)$row["distance_km"] < $min_distance ? (float)$row["distance_km"] : $min_distance);
+          $min_time  = ((float)$row["minutes"] < $min_time ? (float)$row["minutes"] : $min_time);
+          $min_speed  = ((float)$row["speed"] < $min_speed ? (float)$row["speed"] : $min_speed);
+    }
+        $avg_time     = $tot_time /$num;
+        $avg_distance = $tot_distance /$num;
+        $avg_speed    = $tot_speed * 60 / $num;
+        
+        $this->Cell($w[0],6," ",'LR', 0,'C');
+        $this->Cell($w[1],6," ",'LR', 0, 'C');  
+        $this->Cell($w[2],6," ",'LR',0,'C');
+        $this->Cell($w[3],6," ",'LR',0,'C');
+        $this->Ln();
+        $this->Cell($w[0],6,"Averages",'LR', 0,'C');
+        $this->Cell($w[1],6,number_format($avg_time, 0,'.',''),'LR', 0, 'C');  
+        $this->Cell($w[2],6,  number_format($avg_distance, 2,'.',''),'LR',0,'C');
+        $this->Cell($w[3],6,number_format($avg_speed, 3,'.',''),'LR',0,'C');
+        $this->Ln();
+        $this->Cell($w[0],6," ",'LR', 0,'C');
+        $this->Cell($w[1],6," ",'LR', 0, 'C');  
+        $this->Cell($w[2],6," ",'LR',0,'C');
+        $this->Cell($w[3],6," ",'LR',0,'C');
+        $this->Ln();
+        
+        $this->Cell($w[0],6,"Minimum",'LR', 0,'C');
+        $this->Cell($w[1],6,number_format($min_time, 0,'.',''),'LR', 0, 'C');  
+        $this->Cell($w[2],6,number_format($min_distance, 2,'.',''),'LR',0,'C');
+        $this->Cell($w[3],6,number_format($min_speed * 60, 3,'.',''),'LR',0,'C');
+        $this->Ln();
+        $this->Cell($w[0],6," ",'LR', 0,'C');
+        $this->Cell($w[1],6," ",'LR', 0, 'C');  
+        $this->Cell($w[2],6," ",'LR',0,'C');
+        $this->Cell($w[3],6," ",'LR',0,'C');
+        $this->Ln();
+
+        $this->Cell($w[0],6,"Maximum",'LR', 0,'C');
+        $this->Cell($w[1],6,number_format($max_time, 0,'.',''),'LR', 0, 'C');  
+        $this->Cell($w[2],6,number_format($max_distance, 2,'.',''),'LR',0,'C');
+        $this->Cell($w[3],6,number_format($max_speed *60, 3,'.',''),'LR',0,'C');
+        $this->Ln();  
+        $this->Cell($w[0],6," ",'LR', 0,'C');
+        $this->Cell($w[1],6," ",'LR', 0, 'C');  
+        $this->Cell($w[2],6," ",'LR',0,'C');
+        $this->Cell($w[3],6," ",'LR',0,'C');     
+        $this->Ln();
+
+        $this->Cell($w[0],6,"Totals",'LR', 0,'C');
+        $this->Cell($w[1],6,number_format($tot_time, 0,'.',''),'LR', 0, 'C');  
+        $this->Cell($w[2],6,number_format($tot_distance, 2,'.',''),'LR',0,'C');
+        $this->Cell($w[3],6,"N/A",'LR',0,'C');
+       
+        $this->Ln();
+        $this->Cell($w[0],6," ",'LR', 0,'C');
+        $this->Cell($w[1],6," ",'LR', 0, 'C');  
+        $this->Cell($w[2],6," ",'LR',0,'C');
+        $this->Cell($w[3],6," ",'LR',0,'C');
+        $this->Ln();    
+    
+    
     // Closing line
     $this->Cell(array_sum($w),0,'','T');
 } /* end of improved table */
@@ -190,14 +284,29 @@ function FancyTable($header, $data)
 $pdf = new PDF('P','mm','A4'); //l forlandscape default is portrait P
 // Column headings
 //$header = array('Country', 'Capital', 'Area (sq km)', 'Pop. (thousands)');
-$header = array('No.','Minutes','Distance(km)','Speed(km/min)');//,'place','desc','date','addedby');
+$header = array('No.','Minutes','Distance(km)','Speed(km/min)','Date');//,'place','desc','date','addedby');
 // Data loading
-$data = $pdf->LoadDBData('export.csv');
+$data = $pdf->LoadDBData('walks');
 $pdf->SetFont('Arial','',14);
 //$pdf->AddPage();
 //$pdf->BasicTable($header,$data);
 $pdf->AddPage();
 $pdf->ImprovedWalkTable($header,$data);
+
+$headerRep = array('Statistics','Minutes','Distance KM', 'Speed KM/Hour');
+$pdf->AddPage();
+$pdf->ImprovedWalkReportTable($headerRep,$data);
+
+
+//$pdf->AddPage();
+// Insert a dynamic image from a URL
+//$graphtitle =urlencode("Speed km/minutes");
+
+//$graphlink = "http://localhost/walkingstats/basic/graphlinedb.php?title=".$graphtitle."&width=800&height=600";
+
+//$graphlink = "'http://localhost/walkingstats/basic/graphlinedb.php'";
+//print_r($dta1);
+//$pdf->Image('http://127.0.0.1/walkingstats/basic/graphlinedb.php',60,30,90,0,'PNG');
 //$pdf->AddPage();
 //$pdf->FancyTable($header,$data);
 $pdf->Output();
