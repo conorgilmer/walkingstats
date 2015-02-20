@@ -11,6 +11,7 @@ The basic app does
   + Time - line and bar charte
   + Distance - line and bar chart
   + Speed
++ Generate Report display on screen
 + Print Report (PDF) - using www.fpdf.org
 + Import CSV to mysql - commandline/browser no gui
 + Export CSV
