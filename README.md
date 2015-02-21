@@ -1,4 +1,6 @@
 #Walking Stats
+
+##Basic (PHP)
 Measure and keep track of distances and times you do when walking
 The basic app does 
 ##Admin App
@@ -8,14 +10,14 @@ The basic app does
 + List Walks (various ways)
 + Walk can up added, updated and deleted
 + Display statistics
-  + Time - line and bar charte
+  + Time - line and bar chart
   + Distance - line and bar chart
-  + Speed
+  + Speed - line chart
 + Print Report (PDF) - To Do
 + Import CSV to mysql - commandline/browser no gui
 + Export CSV
 + logout fn
 
 ##Public App
-+ list walks
++ List walks
 + Login fn
