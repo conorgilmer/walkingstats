@@ -66,7 +66,7 @@ if ($result) {
 	$htmlString .= "<th>Statistics</th>";
 	$htmlString .= "<th>Minutes</th>";
 	$htmlString .= "<th>Distance (KM)</th>";
-	$htmlString .= "<th>Speed (KM/Minutes)</th>";
+	$htmlString .= "<th>Speed (KM/Hour)</th>";
 	$htmlString .= "</tr>";
 	
 	while ($product = mysql_fetch_assoc($result))
@@ -95,7 +95,7 @@ if ($result) {
 		$htmlString .=  $min_distance;
 		$htmlString .=  "</td>";
 		$htmlString .=  "<td>";
-		$htmlString .=  $min_speed;
+		$htmlString .=  $min_speed * 60;
 		$htmlString .=  "</td>";		
 		$htmlString .=  "</tr>\n";
                 
@@ -111,7 +111,7 @@ if ($result) {
 		$htmlString .=  $max_distance;
 		$htmlString .=  "</td>";
 		$htmlString .=  "<td>";
-		$htmlString .=  $max_speed;
+		$htmlString .=  $max_speed * 60;
 		$htmlString .=  "</td>";
 		
 		$htmlString .=  "</tr>\n";
@@ -121,13 +121,13 @@ if ($result) {
 		$htmlString .=  "Averages";
 		$htmlString .=  "</td>";
 		$htmlString .=  "<td>";
-		$htmlString .=  $tot_time/$number;
+		$htmlString .=  number_format((double)($tot_time/$number), 0,'.','');
 		$htmlString .=  "</td>";
 		$htmlString .=  "<td>";
-		$htmlString .=  $tot_distance/$number;
+		$htmlString .=  number_format((double)($tot_distance/$number), 2,'.','');
 		$htmlString .=  "</td>";
 		$htmlString .=  "<td>";
-		$htmlString .=  $tot_speed/$number;
+		$htmlString .=  number_format((double)($tot_speed*60/$number), 3,'.','');
 		$htmlString .=  "</td>";		
 		$htmlString .=  "</tr>\n";
                 
@@ -142,7 +142,7 @@ if ($result) {
 		$htmlString .=  $tot_distance;
 		$htmlString .=  "</td>";
 		$htmlString .=  "<td>";
-		$htmlString .=  $tot_speed;
+		$htmlString .=  "N/A";
 		$htmlString .=  "</td>";
 		
 		$htmlString .=  "</tr>\n";
