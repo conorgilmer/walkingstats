@@ -39,8 +39,9 @@ include (TEMPLATE_PATH . "/public/header.html");
 <ol>
 <li>Add Graphs - Distance, Time, Speed etc.</li>
 <li>Add Maps, Pics </li>
-<li>Stats</li>
-<li>export to csv</li>
+<li>Stats - Report</li>
+<li>export Report to csv</li>
+<li>export db to csv</li>
 <li>Update by phone app </li>
 </ol></p>
 
