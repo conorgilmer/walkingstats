@@ -8,9 +8,9 @@ The basic app does
 + List Walks (various ways)
 + Walk can up added, updated and deleted
 + Display statistics (graphs using http://phpmygraph.abisvmm.nl/)
-  + Time - line and bar charte
+  + Time - line and bar chart
   + Distance - line and bar chart
-  + Speed
+  + Speed - line chart
 + Generate Report display on screen
 + Print Report (PDF) - using www.fpdf.org
 + Import CSV to mysql - commandline/browser no gui
@@ -20,3 +20,11 @@ The basic app does
 ##Public App
 + list walks
 + Login fn
+
+
+##To Do
++ Validation on insert/update of both walks and routes
++ Date formating on entry
++ make mobile friendly
++ replace added by but whoevers is logged on
++ combo graphs
