@@ -6,7 +6,7 @@ session_start();
 
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == 1) {
 
-header("Location: admin.php");
+header("Location: listwalks.php");
 
 }
 /*

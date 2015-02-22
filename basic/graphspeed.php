@@ -30,7 +30,7 @@ include (TEMPLATE_PATH . "/header.html");
 <div class="container">
 <div class="row">
 <div class="span12">
-<h1>Graph Distance</h1>
+<h1>Graph Speed</h1>
 </div>
 </div>
 <div clas="row">
@@ -38,8 +38,8 @@ include (TEMPLATE_PATH . "/header.html");
 
 <?php 
 $data1 = array();
-$data2 = array();
-$graphtitle = "Speed (Distance/Time)";
+//$data2 = array();
+$graphtitle = "Speed (Distance/Time) KM per Hour";
 $graphwidth = 800;
 $graphheight = 400;
 $sqlQuery = "SELECT * FROM walks";
@@ -51,7 +51,7 @@ if ($result) {
 	while ($db_field = mysql_fetch_assoc($result))
 	{	
          //   $htmlString .=  $route["date"];
-            $data1[$db_field['date']] = $db_field['speed'];
+            $data1[$db_field['date']] = ($db_field['speed'] * 60);
           //  $data2[$db_field['date']] = $db_field['minutes'];
             
 	}

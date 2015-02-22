@@ -36,8 +36,10 @@ include (TEMPLATE_PATH . "/header.html");
 <div clas="row">
 <div class="span9">
 
-<p>
+<p>Technologies used
 <ul>
+<li>PHP - www.php.net</li>
+<li>MySql - www.mysql.org</li>
 <li>Bootstrap - www.getbootstrap.com</li>
 <li>FPDF - www.fpdf.org</li>
 <li>phpMyGraph - http://phpmygraph.abisvmm.nl/</li>
@@ -46,10 +48,13 @@ include (TEMPLATE_PATH . "/header.html");
     <p>
     </p>
 
-<p>Software used
+<p>Tools used
 <ul>
 <li>VIM - www.vim.org </li>
 <li>NetBeans - netbeans.org </li>
+<li>phpMyAdmin</li>
+<li>Apache webserver - www.apache.org</li>
+<li>XAMPP</li>
 </ul></p>
 
 
