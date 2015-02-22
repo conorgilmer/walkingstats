@@ -24,7 +24,11 @@ The basic app does
 
 ##To Do
 + Validation on insert/update of both walks and routes
+  + basic php string and isnumeric (done)
+  + javascript validation
 + Date formating on entry
++ Add are you sure to delete procedure
++ Disable delete on deleting a route which exists
 + make mobile friendly
-+ replace added by but whoevers is logged on
++ replace addedby but whoevers is logged on
 + combo graphs
