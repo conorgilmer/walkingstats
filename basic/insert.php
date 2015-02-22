@@ -37,17 +37,16 @@ if (!empty($_POST)) {
 	
 	
 	$product = array();
-	$product['minutes'] = htmlspecialchars(strip_tags($_POST["minutes"]));
+	$product['minutes']     = htmlspecialchars(strip_tags($_POST["minutes"]));
 	$product['description'] = htmlspecialchars(strip_tags($_POST["description"]));
 	$product['distance_km'] = htmlspecialchars(strip_tags($_POST["distance_km"]));
-	$product['place'] = (int)htmlspecialchars(strip_tags($_POST["place"]));
-	$product['addedby'] = htmlspecialchars(strip_tags($_POST["addedby"]));
-       // $product['speed'] = htmlspecialchars(strip_tags($_POST["speed"]));
-	$product['date'] = htmlspecialchars(strip_tags($_POST["date"]));
-        $product['id'] = isset($_POST["id"]) ? (int) $_POST["id"] : 0;
+	$product['place']       = (int)htmlspecialchars(strip_tags($_POST["place"]));
+	$product['addedby']     = htmlspecialchars(strip_tags($_POST["addedby"]));
+   	$product['date']        = htmlspecialchars(strip_tags($_POST["date"]));
+        $product['id']          = isset($_POST["id"]) ? (int) $_POST["id"] : 0;
         
 	$flashMessage = "";
-	if (validateProduct($product)) {
+	if (validateWalk($product)) {
 		if ($product['id'] == 0) {
          //New! Save Walk returns the id of the record inserted         
 		$product_id = saveWalk($product);
@@ -63,7 +62,10 @@ if (!empty($_POST)) {
                     header("Location: listwalks.php");
                 }	
 	}
-	
+        else
+        {
+            $flashMessage = "Error - " . $_SESSION['errmsg'];
+        }
 	}//end post
 	
 

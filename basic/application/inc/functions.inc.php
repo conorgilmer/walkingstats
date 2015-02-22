@@ -6,14 +6,58 @@
 */
 defined('MY_APP') or die('Restricted access');
 
+// validate the route
+function validateRoute($route) {
+	// if there is date and name
+ 	if(trim($route['name']) == '')
+	{
+		$_SESSION['errmsg'] = 'Please enter a Route Name <br>';
+                return false;
+	}
+   
+		else if(trim($route['date']) == '')
+	{
+		$_SESSION['errmsg'] = 'Please enter the date <br>';
+                return false;
+	}
 
-function validateproduct($product) {
-	
-	
 	return true;
 	
 	
-} /* end of validate product - need to put more in here*/
+} /* end of validate route - need to put more in here*/
+
+// validate the walk
+function validateWalk($walk) {
+	// if minutes and distance are numbers
+        // if place is a valid place/route and date
+    	if(trim($walk['minutes']) == '')
+	{
+		$_SESSION['errmsg'] = 'Please enter a time in minutes <br>';
+                return false;
+	}
+    	else if (is_numeric(trim($walk['minutes'])) == false)
+	{
+		$_SESSION['errmsg'] = 'Minutes need to be in numbers <br>';
+                return false;
+	}
+	else if(trim($walk['distance_km']) == '')
+	{
+		$_SESSION['errmsg'] = 'Please enter the distance<br>';
+                return false;
+	}
+        else if (is_numeric(trim($walk['distance_km'])) == false)
+	{
+		$_SESSION['errmsg'] = 'Distance need to be in numbers <br>';
+                return false;
+	}
+	else if(trim($walk['date']) == '')
+	{
+		$_SESSION['errmsg'] = 'Please enter the date <br>';
+                return false;
+	}	
+	return true;
+	        
+} /* end of validate walk - need to put more in here */
 
 // get the route name
 function getRoute($r_id ) {
