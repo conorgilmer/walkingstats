@@ -38,11 +38,11 @@ include (TEMPLATE_PATH . "/header.html");
 
 <p>Technologies used
 <ul>
-<li>PHP - www.php.net</li>
-<li>MySql - www.mysql.org</li>
-<li>Bootstrap - www.getbootstrap.com</li>
-<li>FPDF - www.fpdf.org</li>
-<li>phpMyGraph - http://phpmygraph.abisvmm.nl/</li>
+<li>PHP - <a target="_blank" href="http://www.php.net">www.php.net</a></li>
+<li>MySql - <a target="_blank" href="http://www.mysql.org">www.mysql.org</a></li>
+<li>Bootstrap - <a target="_blank" href="http://www.getbootstrap.com">www.getboostrap.com</a></li>
+<li>FPDF - <a target="_blank" href="http://www.fpdf.org">www.fpdf.org</a></li>
+<li>phpMyGraph - <a target="_blank" href="http://phpmygraph.abisvmm.nl/">phpmygraph.abisvmm.nl</a></li>
 </ul>
     </p>
     <p>
@@ -50,11 +50,11 @@ include (TEMPLATE_PATH . "/header.html");
 
 <p>Tools used
 <ul>
-<li>VIM - www.vim.org </li>
-<li>NetBeans - netbeans.org </li>
-<li>phpMyAdmin</li>
-<li>Apache webserver - www.apache.org</li>
-<li>XAMPP</li>
+<li>VIM - <a target="_blank" href="http://www.vim.org">www.vim.org</a></li>
+<li>NetBeans - <a target="_blank" href="https://netbeans.org">netbeans.org</a></li>
+<li>phpMyADmin - <a target="_blank" href="http://www.phpmyadmin.net">www.phpmyadmin.net</a></li>
+<li>Apache webserver - <a target="_blank" href="http://www.apache.org">www.apache.org</a></li>
+<li>XAMPP - <a target="_blank" href="https://www.apachefriends.org/index.html">https://www.apachefriends.org/index.html</a></li>
 </ul></p>
 
 
