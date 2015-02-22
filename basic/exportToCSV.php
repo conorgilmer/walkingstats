@@ -71,10 +71,12 @@ $out .="\r\n";
 // Add all values in the table to $out.
 while ($l = mysql_fetch_array($result)) {
 for ($i = 0; $i < $columns; $i++) {
-$out .='"'.$l["$i"].'",';
-$outhtml .= $out;
+//$out .='"'.$l["$i"].'",';
+$out .=trim($l["$i"]).' ,';
+
+    $outhtml .= $out;
 }
-$out .="\r\n";
+$out .="\n";
 $outhtml .="<br>";
 //$edit_item = "update table set status='exported'";
 //    mysql_query($edit_item) or die(mysql_error());
@@ -86,7 +88,7 @@ $outhtml .="<br>";
 // Open file export.csv.
 $f = fopen ($fileout,'w');
 
-// Put all values from $out to showattend.csv.
+// Put all values from $out to export.csv.
 fputs($f, $out);
 fclose($f);
 
