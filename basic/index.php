@@ -29,6 +29,9 @@ include (TEMPLATE_PATH . "/public/header.html");
 <li>Add, Edit, Delete a walk</li>
 <li>List Places/Routes</li>
 <li>Add, Edit, Delete a route</li>
+<li>Graphs - Distance, Time, Speed etc.</li>
+<li>Stats - Report</li>
+<li>Stats - Export Report to PDF</li>
 </ol>
     </p>
     <p>
@@ -37,9 +40,8 @@ include (TEMPLATE_PATH . "/public/header.html");
 
 <p>Some improvements.
 <ol>
-<li>Add Graphs - Distance, Time, Speed etc.</li>
+<li>Custom graphs - Date Range Route Range</li>
 <li>Add Maps, Pics </li>
-<li>Stats - Report</li>
 <li>export Report to csv</li>
 <li>export db to csv</li>
 <li>Update by phone app </li>
