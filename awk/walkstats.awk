@@ -29,5 +29,5 @@ END {
        printf "\n\tAverage:\t%.2f\t%.2f\t\t%.3f\n\n", sum1/n, sum2/n, sum3/n;
        printf "\tMinimum: \t %.0f\t %.2f\t\t%.3f\n", min1, min2, min3;
        printf "\tMaximum: \t %.0f\t %.2f\t\t%.3f\n", max1, max2, max3;
-       printf "\n\tTotal:\t\t%.2f\t%.2f\t\n\n", sum1/n,sum2/n;
+       printf "\n\tTotal:\t\t%.0f\t%.2f\t\n\n", sum1,sum2;
 }
