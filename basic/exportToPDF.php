@@ -298,7 +298,8 @@ $pdf->AddPage();
 $pdf->ImprovedWalkReportTable($headerRep,$data);
 
 
-//$pdf->AddPage();
+$pdf->AddPage();
+$pdf->Image('http://localhost/walkingstats/basic/pieplaces.php?title=Places+Walked&height=400&width=700',10,10,190,90,'PNG');
 // Insert a dynamic image from a URL
 //$graphtitle =urlencode("Speed km/minutes");
 
@@ -309,5 +310,7 @@ $pdf->ImprovedWalkReportTable($headerRep,$data);
 //$pdf->Image('http://127.0.0.1/walkingstats/basic/graphlinedb.php',60,30,90,0,'PNG');
 //$pdf->AddPage();
 //$pdf->FancyTable($header,$data);
+$pdf->AddPage();
+$pdf->Image('http://localhost/walkingstats/basic/line.php?title=Speed+km+per+hour&height=400&width=800',10,10,190,90,'PNG');
 $pdf->Output();
 ?>
