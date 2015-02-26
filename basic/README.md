@@ -1,6 +1,8 @@
 #Walking Stats
 Measure and keep track of distances and times you do when walking
 The basic app does 
+Uploaded to www.conorgilmer.eu/basic/index.php
+
 ##Admin App
 ---------
 + Add a walk saving date, time and distance (maybe comment etc. aswell)
@@ -18,7 +20,8 @@ The basic app does
 + logout fn
 
 ##Public App
-+ list walks
++ list walks without editing/deleting functionality
++ Summary Graphs
 + Login fn
 
 
