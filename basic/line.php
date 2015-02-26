@@ -40,6 +40,9 @@ include (APPLICATION_PATH . "/inc/functions.inc.php");
 	$title  = $_GET['title'];
 	$height = $_GET['height'];
 	$width  = $_GET['width'];
+	$xaxis  = $_GET['xaxis'];
+	$yaxis  = $_GET['yaxis'];
+	$table  = $_GET['table'];
         include "library/libchart/classes/libchart.php";
 
         header("Content-type: image/png");
@@ -47,7 +50,7 @@ include (APPLICATION_PATH . "/inc/functions.inc.php");
         $chart = new LineChart($width, $height);
 
         $dataSet = new XYDataSet();
-$sqlQuery = "SELECT * FROM walks";
+$sqlQuery = "SELECT * FROM $table";
 $result = mysql_query($sqlQuery);
 
 
@@ -57,7 +60,7 @@ if ($result) {
          //   multply by 60 to give KM per hour
           //  $data1[$db_field['date']] = ($db_field['speed'] * 60);            
 
-        $dataSet->addPoint(new Point($db_field['date'], $db_field['speed']));
+        $dataSet->addPoint(new Point($db_field[$xaxis], $db_field[$yaxis]));
        }
 } else {
         

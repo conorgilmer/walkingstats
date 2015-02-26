@@ -311,6 +311,10 @@ $pdf->Image('http://localhost/walkingstats/basic/pieplaces.php?title=Places+Walk
 //$pdf->AddPage();
 //$pdf->FancyTable($header,$data);
 $pdf->AddPage();
-$pdf->Image('http://localhost/walkingstats/basic/line.php?title=Speed+km+per+hour&height=400&width=800',10,10,190,90,'PNG');
+$pdf->Image('http://localhost/walkingstats/basic/line.php?title=Speed+km+per+min&height=400&width=800&xaxis=date&yaxis=speed&table=walks',10,10,190,90,'PNG');
+$pdf->AddPage();
+$pdf->Image('http://localhost/walkingstats/basic/line.php?title=Distance+km&height=400&width=800&xaxis=date&yaxis=distance_km&table=walks',10,10,190,90,'PNG');
+
+
 $pdf->Output();
 ?>
