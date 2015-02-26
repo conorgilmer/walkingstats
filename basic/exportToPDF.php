@@ -297,6 +297,9 @@ $headerRep = array('Statistics','Minutes','Distance KM', 'Speed KM/Hour');
 $pdf->AddPage();
 $pdf->ImprovedWalkReportTable($headerRep,$data);
 
+$pdf->Image('http://localhost/walkingstats/basic/line.php?title=Distance+km&height=400&width=800&xaxis=date&yaxis=distance_km&table=walks',10,170,190,90,'PNG');
+
+
 
 $pdf->AddPage();
 $pdf->Image('http://localhost/walkingstats/basic/pieplaces.php?title=Places+Walked&height=400&width=700',10,10,190,90,'PNG');
@@ -310,10 +313,10 @@ $pdf->Image('http://localhost/walkingstats/basic/pieplaces.php?title=Places+Walk
 //$pdf->Image('http://127.0.0.1/walkingstats/basic/graphlinedb.php',60,30,90,0,'PNG');
 //$pdf->AddPage();
 //$pdf->FancyTable($header,$data);
-$pdf->AddPage();
-$pdf->Image('http://localhost/walkingstats/basic/line.php?title=Speed+km+per+min&height=400&width=800&xaxis=date&yaxis=speed&table=walks',10,10,190,90,'PNG');
-$pdf->AddPage();
-$pdf->Image('http://localhost/walkingstats/basic/line.php?title=Distance+km&height=400&width=800&xaxis=date&yaxis=distance_km&table=walks',10,10,190,90,'PNG');
+//$pdf->AddPage();
+$pdf->Image('http://localhost/walkingstats/basic/line.php?title=Speed+km+per+min&height=400&width=800&xaxis=date&yaxis=speed&table=walks',10,100,190,90,'PNG');
+//$pdf->AddPage();
+$pdf->Image('http://localhost/walkingstats/basic/line.php?title=Time+Minutes&height=400&width=800&xaxis=date&yaxis=minutes&table=walks',10,190,190,90,'PNG');
 
 
 $pdf->Output();
