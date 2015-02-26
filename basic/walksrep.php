@@ -33,8 +33,7 @@ include (TEMPLATE_PATH . "/header.html");
 <div class="span12">
 <h1>Walks Report</h1>
 </div>
-</div>
-<div clas="row">
+<div class="row">
 <div class="span9">
 
 <?php 
@@ -147,14 +146,9 @@ if ($result) {
 		
 		$htmlString .=  "</tr>\n";
                 
-                
-        
 	$htmlString .=  "</table>\n";
 	
 	echo $htmlString ;
-	
-	
-	
 } else {
 	
 	die("Failure: " . mysql_error($link_id));
@@ -162,11 +156,29 @@ if ($result) {
 ?>
 </div>
 <div class="span3"></div>
+</div>
+
+<div class="row">
+    <div class="span5">
+        <img src="http://localhost/walkingstats/basic/line.php?title=Time+Minutes&height=300&width=450&xaxis=date&yaxis=minutes&table=walks"/>
+    </div>
+    <div class="span5">
+        <img src="http://localhost/walkingstats/basic/line.php?title=Distance_km&height=300&width=450&xaxis=date&yaxis=distance_km&table=walks"/>
+    </div>
+
+</div>
+<div class="row">
+    <div class="span5">
+    <img src="http://localhost/walkingstats/basic/pieplaces.php?title=Places+Walked&height=300&width=450">    
+    </div>
+    <div class="span5">
+        <img src="http://localhost/walkingstats/basic/line.php?title=Speed&height=300&width=450&xaxis=date&yaxis=speed&table=walks"/>
+    </div>
 
 </div>
 
-
 </div> <!-- /container -->
+    
 <?php 
 include (TEMPLATE_PATH . "/footer.html");
 ?>
