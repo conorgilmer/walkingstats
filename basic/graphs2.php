@@ -58,7 +58,15 @@ $graphlineurl2="graph_line_generic.php?title=".$graphtitle2."&width=".$graphwidt
 
 </div>
 </div> <!-- /container -->
+<div class="row">
+    <div class="span5">
+    <img src="http://localhost/walkingstats/basic/pieplaces.php?title=Places+Walked&height=300&width=450">    
+    </div>
+    <div class="span5">
+        <img src="http://localhost/walkingstats/basic/line.php?title=Time+Minutes&height=300&width=450&xaxis=date&yaxis=minutes&table=walks"/>
+    </div>
 
+</div>
 
 
 
