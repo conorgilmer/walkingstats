@@ -61,10 +61,14 @@ $_SESSION['data1'] = serialize($data1);
 $graphurl = "graphline.php?title=".$graphtitle."&width=".$graphwidth."&height=".$graphheight;
 ?>
     <img src="<?echo $graphurl;?>"/>
-<!--    <img src="graphline.php?title=<? echo $graphtitle;?>&width=<?echo $graphwidth;?>&height=<?echo $graphheight;?>">
--->
+ <p><a href="graphkmroute.php?route=<?echo $route?>" class=btn btn-primary role=button>Distance</a> 
+ <a href="graphminroute.php?route=<?echo $route?>" class=btn btn-primary role=button>Time</a> 
+ </p>
+
 </div>
 <div class="span3"></div>
+
+
 
 </div>
 
