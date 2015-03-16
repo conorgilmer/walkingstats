@@ -225,6 +225,9 @@ function retrieveRoute($id) {
 	
 } /* end of retrieve route details */
 
+function output_route_speed($id){
+    return "<a href ='graphspeedroutes.php?route=$id'>Speed</a>";
+}
 
 function output_edit_link($id) {
 	
