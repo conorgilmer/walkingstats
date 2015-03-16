@@ -231,10 +231,10 @@ function output_route_speed($id){
 
 
 function output_route_distance($id){
-    return "<a href ='graphspeedroutes.php?route=$id'>Distance</a>";
+    return "<a href ='graphkmroute.php?route=$id'>Distance</a>";
 }
 function output_route_time($id){
-    return "<a href ='graphspeedroutes.php?route=$id'>Time</a>";
+    return "<a href ='graphminroute.php?route=$id'>Time</a>";
 }
 
 function output_edit_link($id) {
