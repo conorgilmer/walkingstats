@@ -50,8 +50,12 @@ if ($result) {
 	$htmlString .= "<th>ID</th>";
 	$htmlString .= "<th>Route</th>";
         $htmlString .= "<th>Date Added</th>";
-        $htmlString .= "<th>Speed<th>";
-        $htmlString .= "<th colspan='4'>Actions</th>";
+        $htmlString .= "<th>Speed</th>";
+        $htmlString .= "<th>Distance</th>";
+        $htmlString .= "<th>Time</th>";
+   
+             
+        $htmlString .= "<th colspan='2'>Actions</th>";
 
 	$htmlString .= "</tr>";
 	
@@ -68,8 +72,18 @@ if ($result) {
 		$htmlString .=  $route["date"];
 		$htmlString .=  "</td>";
 		
+                
 		$htmlString .=  "<td>";
 		$htmlString .=  output_route_speed($route["id"]);
+		$htmlString .=  "</td>";
+		
+		$htmlString .=  "<td>";
+		$htmlString .=  output_route_distance($route["id"]);
+		$htmlString .=  "</td>";
+		
+                
+		$htmlString .=  "<td>";
+		$htmlString .=  output_route_time($route["id"]);
 		$htmlString .=  "</td>";
 		
 		
