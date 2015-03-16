@@ -13,8 +13,9 @@ Uploaded to www.conorgilmer.eu/basic/index.php
   + Time - line and bar chart
   + Distance - line and bar chart
   + Speed - line chart
+  + Places - Pie chart (using LibChart)
 + Generate Report display on screen
-+ Print Report (PDF) - using www.fpdf.org
++ Print Report (PDF) - using www.fpdf.org and LibChart
 + Import CSV to mysql - commandline/browser no gui
 + Export CSV
 + logout fn
@@ -35,3 +36,5 @@ Uploaded to www.conorgilmer.eu/basic/index.php
 + make mobile friendly
 + replace addedby but whoevers is logged on
 + combo graphs
++ add calories
++ add graphs for each walk
