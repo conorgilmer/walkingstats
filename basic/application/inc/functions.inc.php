@@ -229,6 +229,14 @@ function output_route_speed($id){
     return "<a href ='graphspeedroutes.php?route=$id'>Speed</a>";
 }
 
+
+function output_route_distance($id){
+    return "<a href ='graphspeedroutes.php?route=$id'>Distance</a>";
+}
+function output_route_time($id){
+    return "<a href ='graphspeedroutes.php?route=$id'>Time</a>";
+}
+
 function output_edit_link($id) {
 	
 	return "<a href='edit.php?id=$id'>Edit</a>";	
