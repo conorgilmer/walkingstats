@@ -27,6 +27,7 @@ $product['minutes'] = "";
 $product['description'] = "";
 $product['distance_km'] ="";
 $product['speed'] ="";
+$product['calories'] ="";
 $product['place'] ="";
 $product['addedby'] ="";
 $product['product_id']="";
@@ -40,7 +41,8 @@ if (!empty($_POST)) {
 	$product['minutes']     = htmlspecialchars(strip_tags($_POST["minutes"]));
 	$product['description'] = htmlspecialchars(strip_tags($_POST["description"]));
 	$product['distance_km'] = htmlspecialchars(strip_tags($_POST["distance_km"]));
-	$product['place']       = (int)htmlspecialchars(strip_tags($_POST["place"]));
+	$product['calories']    = htmlspecialchars(strip_tags($_POST["calories"]));
+        $product['place']       = (int)htmlspecialchars(strip_tags($_POST["place"]));
 	$product['addedby']     = htmlspecialchars(strip_tags($_POST["addedby"]));
    	$product['date']        = htmlspecialchars(strip_tags($_POST["date"]));
         $product['id']          = isset($_POST["id"]) ? (int) $_POST["id"] : 0;

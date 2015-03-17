@@ -83,8 +83,8 @@ function saveWalk($walk ) {
         $addeddate = date("Y-m-d", strtotime($walk['date']));
         //die($addeddate);
         $speed = ((float)$walk['distance_km']) / ((float)$walk['minutes']);
-	$sqlQuery = "INSERT INTO walks (id, minutes, distance_km, speed, place, description, date, addedby)
-        values ('', '{$walk['minutes']}', '{$walk['distance_km']}','{$speed}','{$walk['place']}',
+	$sqlQuery = "INSERT INTO walks (id, minutes, distance_km, speed, calories, place, description, date, addedby)
+        values ('', '{$walk['minutes']}', '{$walk['distance_km']}','{$speed}','{$walk['calories']}','{$walk['place']}',
             '{$walk['description']}', '{$addeddate}', '{$walk['addedby']}')";
 	
 	$result = mysql_query($sqlQuery);
@@ -115,6 +115,7 @@ function updateWalk($walk ) {
         $sqlQuery .= " minutes = '". $walk['minutes'] . "'";
         $sqlQuery .= ", distance_km = '". $walk['distance_km'] . "'";
         $sqlQuery .= ", speed = '". $speed . "'";
+        $sqlQuery .= ", calories = '". $walk['calories'] . "'";
         $sqlQuery .= ", place = '". $walk['place'] . "'";
         $sqlQuery .= ", description = '". $walk['description'] . "'";
         $sqlQuery .= ", date = '". $addeddate . "'";
