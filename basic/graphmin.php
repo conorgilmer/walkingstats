@@ -30,7 +30,7 @@ include (TEMPLATE_PATH . "/header.html");
 <div class="container">
 <div class="row">
 <div class="span12">
-<h1>Graph Distance</h1>
+<h1>Graph Minutes</h1>
 </div>
 </div>
 <div clas="row">
@@ -65,6 +65,11 @@ $_SESSION['data1'] = serialize($data1);
 
 ?>
     <img src="graphline.php?title=<? echo $graphtitle;?>&width=<?echo $graphwidth;?>&height=<?echo $graphheight;?>">
+  <p><a href="graphspeed.php" class=btn btn-primary role=button>Speed</a> 
+ <a href="graphcal.php" class=btn btn-primary role=button>Calories</a> 
+ <a href="graphkm.php" class=btn btn-primary role=button>Distance</a> 
+
+ </p>
 </div>
 <div class="span3"></div>
 

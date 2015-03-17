@@ -38,7 +38,6 @@ include (TEMPLATE_PATH . "/header.html");
 
 <?php 
 $data1 = array();
-//$data2 = array();
 $graphtitle = "Speed (Distance/Time) KM per Hour";
 $graphwidth = 800;
 $graphheight = 400;
@@ -47,13 +46,10 @@ $result = mysql_query($sqlQuery);
 
 
 if ($result) {
-//	$htmlString = "";
 	while ($db_field = mysql_fetch_assoc($result))
 	{	
-         //   $htmlString .=  $route["date"];
-            $data1[$db_field['date']] = ($db_field['speed'] * 60);
-          //  $data2[$db_field['date']] = $db_field['minutes'];
-            
+         //   multply by 60 to give KM per hour
+            $data1[$db_field['date']] = ($db_field['speed'] * 60);            
 	}
 } else {
 	
@@ -61,10 +57,14 @@ if ($result) {
 }
 
 $_SESSION['data1'] = serialize($data1);
-//$_SESSION['data2'] = serialize($data2);
-
+$graphurl = "graphline.php?title=".$graphtitle."&width=".$graphwidth."&height=".$graphheight;
 ?>
-    <img src="graphline.php?title=<? echo $graphtitle;?>&width=<?echo $graphwidth;?>&height=<?echo $graphheight;?>">
+    <img src="<?echo $graphurl;?>"/>
+  <p><a href="graphcal.php" class=btn btn-primary role=button>Calories</a> 
+ <a href="graphmin.php" class=btn btn-primary role=button>Time</a> 
+ <a href="graphkm.php" class=btn btn-primary role=button>Distance</a> 
+
+ </p>
 </div>
 <div class="span3"></div>
 

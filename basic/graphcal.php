@@ -68,6 +68,14 @@ $_SESSION['data1'] = serialize($data1);
 
 ?>
     <img src="graphline.php?title=<? echo $graphtitle;?>&width=<?echo $graphwidth;?>&height=<?echo $graphheight;?>">
+
+    <p><a href="graphspeed.php" class=btn btn-primary role=button>Speed</a> 
+ <a href="graphmin.php" class=btn btn-primary role=button>Time</a> 
+ <a href="graphkm.php" class=btn btn-primary role=button>Distance</a> 
+
+ </p>
+
+
 </div>
 <div class="span3"></div>
 
