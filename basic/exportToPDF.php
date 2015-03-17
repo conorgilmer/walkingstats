@@ -125,7 +125,7 @@ function ImprovedTable($header, $data)
 function ImprovedWalkTable($header, $data)
 {
     // Column widths
-    $w = array(20, 35, 40, 40,40);
+    $w = array(15, 30, 40, 40, 30, 35);
     // Header
 //    print_r($header);
     for($i=0;$i<count($header);$i++){
@@ -139,8 +139,10 @@ function ImprovedWalkTable($header, $data)
 //        $this->Cell($w[1],6,$row[1],'LR');
         $this->Cell($w[1],6,(int)$row['minutes'],'LR', 0, 'C');  
         $this->Cell($w[2],6,number_format((double)$row['distance_km'], 2,'.',''),'LR',0,'C');
-        $this->Cell($w[3],6,number_format((double)$row['speed'], 3,'.',''),'LR',0,'C');
-        $this->Cell($w[4],6,$row['date'],'LR',0,'C');
+        $this->Cell($w[3],6,number_format((60*(double)$row['speed']), 3,'.',''),'LR',0,'C');
+        $this->Cell($w[4],6,(int)$row['calories'],'LR', 0, 'C');  
+
+        $this->Cell($w[5],6,$row['date'],'LR',0,'C');
       
         $this->Ln();
     }
@@ -281,10 +283,9 @@ function FancyTable($header, $data)
 } /* end of class */
 
 /* main stuff calling the fpdf */
-$pdf = new PDF('P','mm','A4'); //l forlandscape default is portrait P
-// Column headings
-//$header = array('Country', 'Capital', 'Area (sq km)', 'Pop. (thousands)');
-$header = array('No.','Minutes','Distance(km)','Speed(km/min)','Date');//,'place','desc','date','addedby');
+$pdf = new PDF('P','mm','A4'); //l for landscape default is portrait P
+// Column heading
+$header = array('No.','Minutes','Distance(km)','Speed(km/hour)','Calories','Date');//,'place','desc','date','addedby');
 // Data loading
 $data = $pdf->LoadDBData('walks');
 $pdf->SetFont('Arial','',14);
@@ -296,13 +297,13 @@ $pdf->ImprovedWalkTable($header,$data);
 $headerRep = array('Statistics','Minutes','Distance KM', 'Speed KM/Hour');
 $pdf->AddPage();
 $pdf->ImprovedWalkReportTable($headerRep,$data);
-
-$pdf->Image('http://localhost/walkingstats/basic/line.php?title=Distance+km&height=400&width=800&xaxis=date&yaxis=distance_km&table=walks',10,170,190,90,'PNG');
-
+$hostlink ="http://www.conorgilmer.eu/walkingstats/";
+//$hostlink ="http://localhost/walkingstats/basic/";
+$pdf->Image($hostlink.'line.php?title=Distance+km&height=400&width=800&xaxis=date&yaxis=distance_km&table=walks',10,170,190,90,'PNG');
 
 
 $pdf->AddPage();
-$pdf->Image('http://localhost/walkingstats/basic/pieplaces.php?title=Places+Walked&height=400&width=700',10,10,190,90,'PNG');
+$pdf->Image($hostlink.'pieplaces.php?title=Places+Walked&height=400&width=700',10,10,190,90,'PNG');
 // Insert a dynamic image from a URL
 //$graphtitle =urlencode("Speed km/minutes");
 
@@ -314,9 +315,9 @@ $pdf->Image('http://localhost/walkingstats/basic/pieplaces.php?title=Places+Walk
 //$pdf->AddPage();
 //$pdf->FancyTable($header,$data);
 //$pdf->AddPage();
-$pdf->Image('http://localhost/walkingstats/basic/line.php?title=Speed+km+per+min&height=400&width=800&xaxis=date&yaxis=speed&table=walks',10,100,190,90,'PNG');
+$pdf->Image($hostlink.'line.php?title=Speed+km+per+min&height=400&width=800&xaxis=date&yaxis=speed&table=walks',10,100,190,90,'PNG');
 //$pdf->AddPage();
-$pdf->Image('http://localhost/walkingstats/basic/line.php?title=Time+Minutes&height=400&width=800&xaxis=date&yaxis=minutes&table=walks',10,190,190,90,'PNG');
+$pdf->Image($hostlink.'line.php?title=Time+Minutes&height=400&width=800&xaxis=date&yaxis=minutes&table=walks',10,190,190,90,'PNG');
 
 
 $pdf->Output();
