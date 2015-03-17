@@ -44,13 +44,17 @@ include (TEMPLATE_PATH . "/header.html");
 $min_speed    = 10.0;
 $min_distance = 10.0;
 $min_time     = 100.0;
+$min_cal      = 1000.0;
 $max_speed    = 0.0;
 $max_distance = 0.0;
 $max_time     = 0.0;
+$max_cal      = 0.0;
 $tot_speed    = 0.0;
 $tot_distance = 0.0;
 $tot_time     = 0.0;
+$tot_cal      = 0.0;
 $number       = 0;
+$numcal       = 0;
 
 
 $sqlQuery = "SELECT * FROM walks";
@@ -66,21 +70,31 @@ if ($result) {
 	$htmlString .= "<th>Minutes</th>";
 	$htmlString .= "<th>Distance (KM)</th>";
 	$htmlString .= "<th>Speed (KM/Hour)</th>";
+        
+	$htmlString .= "<th>Calories</th>";
 	$htmlString .= "</tr>";
 	
 	while ($product = mysql_fetch_assoc($result))
 	{       $number++;
-        
+                $tot_cal      = $tot_cal      + (float)$product["calories"];
                 $tot_time     = $tot_time     + (float)$product["minutes"];
                 $tot_distance = $tot_distance + (float)$product["distance_km"];
                 $tot_speed    = $tot_speed    + (float)$product["speed"];
                 $max_distance = ((float)$product["distance_km"] > $max_distance ? (float)$product["distance_km"] : $max_distance);
-                $max_time  = ((float)$product["minutes"] > $max_time ? (float)$product["minutes"] : $max_time);
-                $max_speed  = ((float)$product["speed"] > $max_speed ? (float)$product["speed"] : $max_speed);
+                $max_time     = ((float)$product["minutes"] > $max_time ? (float)$product["minutes"] : $max_time);
+                $max_speed    = ((float)$product["speed"] > $max_speed ? (float)$product["speed"] : $max_speed);
+                $max_cal      = ((float)$product["calories"] > $max_cal ? (float)$product["calories"] : $max_cal);
+       
                 $min_distance = ((float)$product["distance_km"] < $min_distance ? (float)$product["distance_km"] : $min_distance);
-                $min_time  = ((float)$product["minutes"] < $min_time ? (float)$product["minutes"] : $min_time);
-                $min_speed  = ((float)$product["speed"] < $min_speed ? (float)$product["speed"] : $min_speed);
-
+                $min_time     = ((float)$product["minutes"] < $min_time ? (float)$product["minutes"] : $min_time);
+                $min_speed    = ((float)$product["speed"] < $min_speed ? (float)$product["speed"] : $min_speed);
+                if (empty($product['calories']))
+                    $numcal = $numcal;
+                else {
+                
+                    $numcal++;
+                    $min_cal      = ((float)$product["calories"] < $min_cal ? (float)$product["calories"] : $min_cal);
+                }
                 
         }
         	$htmlString .=  "<tr>" ;
@@ -95,7 +109,10 @@ if ($result) {
 		$htmlString .=  "</td>";
 		$htmlString .=  "<td>";
 		$htmlString .=  $min_speed * 60;
-		$htmlString .=  "</td>";		
+		$htmlString .=  "</td>";
+      		$htmlString .=  "<td>";
+		$htmlString .=  $min_cal;
+		$htmlString .=  "</td>";
 		$htmlString .=  "</tr>\n";
                 
                 
@@ -112,7 +129,9 @@ if ($result) {
 		$htmlString .=  "<td>";
 		$htmlString .=  $max_speed * 60;
 		$htmlString .=  "</td>";
-		
+      		$htmlString .=  "<td>";
+		$htmlString .=  $max_cal;
+		$htmlString .=  "</td>";		
 		$htmlString .=  "</tr>\n";
                 
         	$htmlString .=  "<tr>" ;
@@ -127,6 +146,9 @@ if ($result) {
 		$htmlString .=  "</td>";
 		$htmlString .=  "<td>";
 		$htmlString .=  number_format((double)($tot_speed*60/$number), 3,'.','');
+		$htmlString .=  "</td>";
+		$htmlString .=  "<td>";
+		$htmlString .=  number_format((double)($tot_cal/$numcal), 0,'.','');
 		$htmlString .=  "</td>";		
 		$htmlString .=  "</tr>\n";
                 
@@ -143,7 +165,9 @@ if ($result) {
 		$htmlString .=  "<td>";
 		$htmlString .=  "N/A";
 		$htmlString .=  "</td>";
-		
+      		$htmlString .=  "<td>";
+		$htmlString .=  $tot_cal;
+		$htmlString .=  "</td>";	
 		$htmlString .=  "</tr>\n";
                 
 	$htmlString .=  "</table>\n";
