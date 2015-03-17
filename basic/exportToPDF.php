@@ -318,7 +318,8 @@ $pdf->Image($hostlink.'pieplaces.php?title=Places+Walked&height=400&width=700',1
 $pdf->Image($hostlink.'line.php?title=Speed+km+per+min&height=400&width=800&xaxis=date&yaxis=speed&table=walks',10,100,190,90,'PNG');
 //$pdf->AddPage();
 $pdf->Image($hostlink.'line.php?title=Time+Minutes&height=400&width=800&xaxis=date&yaxis=minutes&table=walks',10,190,190,90,'PNG');
-
+$pdf->AddPage();
+$pdf->Image($hostlink.'line.php?title=Calories&height=400&width=800&xaxis=date&yaxis=calories&table=walks',10,190,190,90,'PNG');
 
 $pdf->Output();
 ?>
