@@ -9,16 +9,19 @@ Uploaded to www.conorgilmer.eu/basic/index.php
 + Walk can up added, updated and deleted
 + List Walks (various ways)
 + Walk can up added, updated and deleted
++ add calories
 + Display statistics (graphs using http://phpmygraph.abisvmm.nl/)
   + Time - line and bar chart
   + Distance - line and bar chart
   + Speed - line chart
+  + Calories - line chart
   + Places - Pie chart (using LibChart)
 + Generate Report display on screen
 + Print Report (PDF) - using www.fpdf.org and LibChart
 + Import CSV to mysql - commandline/browser no gui
 + Export CSV
 + logout fn
++ add graphs for each walk
 
 ##Public App
 + list walks without editing/deleting functionality
@@ -36,5 +39,3 @@ Uploaded to www.conorgilmer.eu/basic/index.php
 + make mobile friendly
 + replace addedby but whoevers is logged on
 + combo graphs
-+ add calories
-+ add graphs for each walk

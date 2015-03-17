@@ -23,45 +23,32 @@ include (TEMPLATE_PATH . "/public/header.html");
     
     <h1>Walking Tracker</h1>
 
-<p>Basic Walking Recording.
+<p>Basic Walking Recording.</p>
 <ol>
 <li>List all walks
 <li>Add, Edit, Delete a walk</li>
 <li>List Places/Routes</li>
 <li>Add, Edit, Delete a route</li>
-<li>Graphs - Distance, Time, Speed etc.</li>
+<li>Graphs - Distance, Time, Speed, Calories, Places etc.</li>
 <li>Stats - Report</li>
 <li>Stats - Export Report to PDF</li>
 </ol>
-    </p>
-    <p>
+    
+    
     <h1>To Do</h1>
-    </p>
-
-<p>Some improvements.
+    <p>
+Some improvements.</p>
 <ol>
 <li>Custom graphs - Date Range Route Range</li>
 <li>Add Maps, Pics </li>
 <li>export Report to csv</li>
 <li>export db to csv</li>
 <li>Update by phone app </li>
-</ol></p>
-
+</ol>
         
     </div>
     
-    
-    
-    
-   
-    
-    
     </div>
-    
-    
-  
-    
-    
 
 </div>
 
