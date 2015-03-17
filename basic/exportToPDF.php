@@ -154,7 +154,7 @@ function ImprovedWalkTable($header, $data)
 function ImprovedWalkReportTable($header, $data)
 {
     // Column widths
-    $w = array(40, 35, 40,50);
+    $w = array(35, 32, 40, 40, 33);
     // Header
 //    print_r($header);
     $this->Text(10, 100, "Statistics from the walks database table");
@@ -162,82 +162,107 @@ function ImprovedWalkReportTable($header, $data)
     $this->Cell($w[$i],7,$header[$i],1,0,'C');}
     $this->Ln();
     $num =0;
-    $tot_time =0;
-    $tot_distance = 0;
-    $tot_speed =0;
     $min_speed    = 10.0;
     $min_distance = 10.0;
     $min_time     = 100.0;
+    $min_cal      = 1000.0;
     $max_speed    = 0.0;
     $max_distance = 0.0;
     $max_time     = 0.0;
-    
+    $max_cal      = 0.0;
+    $tot_speed    = 0.0;
+    $tot_distance = 0.0;
+    $tot_time     = 0.0;
+    $tot_cal      = 0.0;    
+    $number       = 0;
+    $numcal       = 0;
     // Data
     foreach($data as $row)
     {   $num++; // since $row[0] is not contigious 
     
-          $tot_time = $tot_time + (double)$row['minutes'];        
-          $tot_distance = $tot_distance + (double)$row['distance_km'];
-          $tot_speed = $tot_speed + (double)$row['speed'];
-          $max_distance = ((float)$row["distance_km"] > $max_distance ? (float)$row["distance_km"] : $max_distance);
-          $max_time  = ((float)$row["minutes"] > $max_time ? (float)$row["minutes"] : $max_time);
-          $max_speed  = ((float)$row["speed"] > $max_speed ? (float)$row["speed"] : $max_speed);
-          $min_distance = ((float)$row["distance_km"] < $min_distance ? (float)$row["distance_km"] : $min_distance);
-          $min_time  = ((float)$row["minutes"] < $min_time ? (float)$row["minutes"] : $min_time);
-          $min_speed  = ((float)$row["speed"] < $min_speed ? (float)$row["speed"] : $min_speed);
+        $number++;
+        $tot_cal      = $tot_cal      + (float)$row["calories"];
+        $tot_time     = $tot_time     + (float)$row["minutes"]; 
+        $tot_distance = $tot_distance + (float)$row["distance_km"];
+        $tot_speed    = $tot_speed    + (float)$row["speed"];
+        $max_distance = ((float)$row["distance_km"] > $max_distance ? (float)$row["distance_km"] : $max_distance);
+        $max_time     = ((float)$row["minutes"] > $max_time ? (float)$row["minutes"] : $max_time);                
+        $max_speed    = ((float)$row["speed"] > $max_speed ? (float)$row["speed"] : $max_speed);
+        $max_cal      = ((float)$row["calories"] > $max_cal ? (float)$row["calories"] : $max_cal);
+       
+        $min_distance = ((float)$row["distance_km"] < $min_distance ? (float)$row["distance_km"] : $min_distance);              
+        $min_time     = ((float)$row["minutes"] < $min_time ? (float)$row["minutes"] : $min_time);
+        $min_speed    = ((float)$row["speed"] < $min_speed ? (float)$row["speed"] : $min_speed);
+                if (empty($row['calories']))
+                    $numcal = $numcal;
+                else {
+                
+                    $numcal++;
+                    $min_cal      = ((float)$row["calories"] < $min_cal ? (float)$row["calories"] : $min_cal);
+                }
     }
         $avg_time     = $tot_time /$num;
         $avg_distance = $tot_distance /$num;
         $avg_speed    = $tot_speed * 60 / $num;
+        $avg_cal      = $tot_cal / $numcal;
         
         $this->Cell($w[0],6," ",'LR', 0,'C');
         $this->Cell($w[1],6," ",'LR', 0, 'C');  
         $this->Cell($w[2],6," ",'LR',0,'C');
         $this->Cell($w[3],6," ",'LR',0,'C');
+        $this->Cell($w[4],6," ",'LR',0,'C');
         $this->Ln();
         $this->Cell($w[0],6,"Averages",'LR', 0,'C');
         $this->Cell($w[1],6,number_format($avg_time, 0,'.',''),'LR', 0, 'C');  
         $this->Cell($w[2],6,  number_format($avg_distance, 2,'.',''),'LR',0,'C');
         $this->Cell($w[3],6,number_format($avg_speed, 3,'.',''),'LR',0,'C');
+        $this->Cell($w[4],6,number_format($avg_cal, 0,'.',''),'LR',0,'C');
         $this->Ln();
         $this->Cell($w[0],6," ",'LR', 0,'C');
         $this->Cell($w[1],6," ",'LR', 0, 'C');  
         $this->Cell($w[2],6," ",'LR',0,'C');
         $this->Cell($w[3],6," ",'LR',0,'C');
+        $this->Cell($w[4],6," ",'LR',0,'C');
         $this->Ln();
         
         $this->Cell($w[0],6,"Minimum",'LR', 0,'C');
         $this->Cell($w[1],6,number_format($min_time, 0,'.',''),'LR', 0, 'C');  
         $this->Cell($w[2],6,number_format($min_distance, 2,'.',''),'LR',0,'C');
         $this->Cell($w[3],6,number_format($min_speed * 60, 3,'.',''),'LR',0,'C');
+        $this->Cell($w[4],6,number_format($min_cal, 0,'.',''),'LR',0,'C');
         $this->Ln();
         $this->Cell($w[0],6," ",'LR', 0,'C');
         $this->Cell($w[1],6," ",'LR', 0, 'C');  
         $this->Cell($w[2],6," ",'LR',0,'C');
         $this->Cell($w[3],6," ",'LR',0,'C');
+        $this->Cell($w[4],6," ",'LR',0,'C');
         $this->Ln();
 
         $this->Cell($w[0],6,"Maximum",'LR', 0,'C');
         $this->Cell($w[1],6,number_format($max_time, 0,'.',''),'LR', 0, 'C');  
         $this->Cell($w[2],6,number_format($max_distance, 2,'.',''),'LR',0,'C');
         $this->Cell($w[3],6,number_format($max_speed *60, 3,'.',''),'LR',0,'C');
+        $this->Cell($w[4],6,number_format($max_cal, 0,'.',''),'LR',0,'C');
         $this->Ln();  
         $this->Cell($w[0],6," ",'LR', 0,'C');
         $this->Cell($w[1],6," ",'LR', 0, 'C');  
         $this->Cell($w[2],6," ",'LR',0,'C');
         $this->Cell($w[3],6," ",'LR',0,'C');     
+        $this->Cell($w[4],6," ",'LR',0,'C');     
         $this->Ln();
 
         $this->Cell($w[0],6,"Totals",'LR', 0,'C');
         $this->Cell($w[1],6,number_format($tot_time, 0,'.',''),'LR', 0, 'C');  
         $this->Cell($w[2],6,number_format($tot_distance, 2,'.',''),'LR',0,'C');
         $this->Cell($w[3],6,"N/A",'LR',0,'C');
+        $this->Cell($w[4],6,number_format($tot_cal, 0,'.',''),'LR',0,'C');
        
         $this->Ln();
         $this->Cell($w[0],6," ",'LR', 0,'C');
         $this->Cell($w[1],6," ",'LR', 0, 'C');  
         $this->Cell($w[2],6," ",'LR',0,'C');
         $this->Cell($w[3],6," ",'LR',0,'C');
+        $this->Cell($w[4],6," ",'LR',0,'C');
         $this->Ln();    
     
     
@@ -294,11 +319,11 @@ $pdf->SetFont('Arial','',14);
 $pdf->AddPage();
 $pdf->ImprovedWalkTable($header,$data);
 
-$headerRep = array('Statistics','Minutes','Distance KM', 'Speed KM/Hour');
+$headerRep = array('Statistics','Minutes','Distance KM', 'Speed KM/Hour', 'Calories');
 $pdf->AddPage();
 $pdf->ImprovedWalkReportTable($headerRep,$data);
-$hostlink ="http://www.conorgilmer.eu/walkingstats/";
-//$hostlink ="http://localhost/walkingstats/basic/";
+$hostlink ="http://www.conorgilmer.eu/walkingstats/"; //hosted
+//$hostlink ="http://localhost/walkingstats/basic/"; //testing
 $pdf->Image($hostlink.'line.php?title=Distance+km&height=400&width=800&xaxis=date&yaxis=distance_km&table=walks',10,170,190,90,'PNG');
 
 
