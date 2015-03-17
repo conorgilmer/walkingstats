@@ -52,6 +52,7 @@ if ($result) {
 	$htmlString .= "<th>Minutes</th>";
 	$htmlString .= "<th>Distance</th>";
 	$htmlString .= "<th>Speed</th>";
+        $htmlString .= "<th>Calories</th>";
         $htmlString .= "<th>Place</th>";
         $htmlString .= "<th>Description</th>";
         $htmlString .= "<th>Date Added</th>";
@@ -72,6 +73,9 @@ if ($result) {
 		$htmlString .=  "</td>";
 		$htmlString .=  "<td>";
 		$htmlString .=  $product["speed"];
+		$htmlString .=  "</td>";
+                $htmlString .=  "<td>";
+		$htmlString .=  $product["calories"];
 		$htmlString .=  "</td>";
                 $htmlString .=  "<td>";
 		$htmlString .=  getRoute($product["place"]);
