@@ -30,7 +30,7 @@ include (TEMPLATE_PATH . "/header.html");
 <div class="container">
 <div class="row">
 <div class="span12">
-<h1>Graph Speed</h1>
+<h1>Graph Speed  <?echo getRoute($_GET['route']);?></h1>
 </div>
 </div>
 <div clas="row">

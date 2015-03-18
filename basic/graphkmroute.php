@@ -20,6 +20,7 @@ include_once(APPLICATION_PATH . "/inc/session.inc.php");
 include (APPLICATION_PATH . "/inc/config.inc.php");
 include (APPLICATION_PATH . "/inc/db.inc.php");
 include (APPLICATION_PATH . "/inc/functions.inc.php");
+include (APPLICATION_PATH . "/inc/queries.inc.php");
 
 //Set up variable so 'active' class set on navbar link
 $activeHome = "active";
@@ -30,7 +31,7 @@ include (TEMPLATE_PATH . "/header.html");
 <div class="container">
 <div class="row">
 <div class="span12">
-<h1>Graph Distance</h1>
+    <h1>Graph Distance <?echo getRoute($_GET['route']);?></h1>
 </div>
 </div>
 <div clas="row">

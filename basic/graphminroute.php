@@ -30,7 +30,7 @@ include (TEMPLATE_PATH . "/header.html");
 <div class="container">
 <div class="row">
 <div class="span12">
-<h1>Graph Minutes</h1>
+<h1>Graph Minutes  <?echo getRoute($_GET['route']);?></h1>
 </div>
 </div>
 <div clas="row">
