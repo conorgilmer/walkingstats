@@ -70,6 +70,7 @@ $_SESSION['data1'] = serialize($data1);
 
  <p><a href="graphspeedroutes.php?route=<?echo $route?>" class=btn btn-primary role=button>Speed</a> 
  <a href="graphkmroute.php?route=<?echo $route?>" class=btn btn-primary role=button>Distance</a> 
+  <a href="graphcalroute.php?route=<?echo $route?>" class=btn btn-primary role=button>Calories</a> 
  </p>
 
 </div>

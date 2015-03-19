@@ -63,6 +63,7 @@ $graphurl = "graphline.php?title=".$graphtitle."&width=".$graphwidth."&height=".
     <img src="<?echo $graphurl;?>"/>
  <p><a href="graphkmroute.php?route=<?echo $route?>" class=btn btn-primary role=button>Distance</a> 
  <a href="graphminroute.php?route=<?echo $route?>" class=btn btn-primary role=button>Time</a> 
+ <a href="graphcalroute.php?route=<?echo $route?>" class=btn btn-primary role=button>Calories</a> 
  </p>
 
 </div>
