@@ -226,16 +226,25 @@ function retrieveRoute($id) {
 	
 } /* end of retrieve route details */
 
+
+/* form the link for graph speed for routes */
 function output_route_speed($id){
     return "<a href ='graphspeedroutes.php?route=$id'>Speed</a>";
 }
 
-
+/* form the link for graph distance for routes */
 function output_route_distance($id){
     return "<a href ='graphkmroute.php?route=$id'>Distance</a>";
 }
+
+/* form the link for graph time for routes */
 function output_route_time($id){
     return "<a href ='graphminroute.php?route=$id'>Time</a>";
+}
+
+/* form the link for graph calories for routes */
+function output_route_cal($id){
+    return "<a href ='graphcalroute.php?route=$id'>Calories</a>";
 }
 
 function output_edit_link($id) {
