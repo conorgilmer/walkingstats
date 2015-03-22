@@ -64,6 +64,11 @@ $_SESSION['data'] = serialize($data1);
 
 ?>
     <img src="generate_bar.php?title=<? echo $graphtitle;?>&width=<?echo $graphwidth;?>&height=<?echo $graphheight;?>">
+<p><a href="graphkmbar.php" class=btn btn-primary role=button>Distance</a> 
+ <a href="graphminbar.php" class=btn btn-primary role=button>Time</a> 
+  <a href="graphcalbar.php" class=btn btn-primary role=button>Calories</a> 
+ 
+ </p>
 </div>
 <div class="span3"></div>
 
