@@ -13,8 +13,8 @@ Uploaded to www.conorgilmer.eu/basic/index.php
 + Display statistics (graphs using http://phpmygraph.abisvmm.nl/)
   + Time - line and bar chart
   + Distance - line and bar chart
-  + Speed - line chart
-  + Calories - line chart
+  + Speed - line and bar chart
+  + Calories - line and bar chart
   + Places - Pie chart (using LibChart)
 + Generate Report display on screen
 + Print Report (PDF) - using www.fpdf.org and LibChart
