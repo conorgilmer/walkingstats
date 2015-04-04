@@ -35,7 +35,7 @@ include (TEMPLATE_PATH . "/header.html");
 </div>
 </div>
 <div clas="row">
-<div class="span9">
+<div class="span12">
 
 <?php 
 
@@ -118,9 +118,6 @@ if ($result) {
 	die("Failure: " . mysql_error($link_id));
 }
 ?>
-</div>
-<div class="span3"></div>
-
 </div>
 
 
