@@ -35,7 +35,7 @@ include (TEMPLATE_PATH . "/public/header.html");
 </div>
 </div>
 <div clas="row">
-<div class="span9">
+<div class="span11">
 
 <?php 
 
@@ -106,7 +106,7 @@ if ($result) {
 }
 ?>
 </div>
-<div class="span3"></div>
+<div class="span1"></div>
 
 </div>
 
