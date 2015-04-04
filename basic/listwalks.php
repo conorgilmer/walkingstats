@@ -35,7 +35,7 @@ include (TEMPLATE_PATH . "/header.html");
 </div>
 </div>
 <div clas="row">
-<div class="span12">
+<div class="span11">
 
 <?php 
 
@@ -118,10 +118,14 @@ if ($result) {
 	die("Failure: " . mysql_error($link_id));
 }
 ?>
+
 </div>
 
-
-</div> <!-- /container -->
+<div class="row">
+<div class="span12">
 <?php 
 include (TEMPLATE_PATH . "/footer.html");
 ?>
+</div>
+</div>
+</div> <!-- /container -->
