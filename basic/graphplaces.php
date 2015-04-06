@@ -36,7 +36,7 @@ include (TEMPLATE_PATH . "/header.html");
 <div clas="row">
 <div class="span9">
 
-    <img src="http://localhost/walkingstats/basic/pieplaces.php?title=Places+Walked&height=500&width=800"/> 
+    <img src="http://www.conorgilmer.eu/walkingstats/pieplaces.php?title=Places+Walked&height=500&width=800"/> 
  
 </div>
 <div class="span3"></div>
