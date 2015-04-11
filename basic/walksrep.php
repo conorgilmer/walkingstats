@@ -184,19 +184,19 @@ if ($result) {
 
 <div class="row">
     <div class="span5">
-        <img src="http://localhost/walkingstats/basic/line.php?title=Time+Minutes&height=300&width=450&xaxis=date&yaxis=minutes&table=walks"/>
+        <img src="<?echo $HOSTURL?>/line.php?title=Time+Minutes&height=300&width=450&xaxis=date&yaxis=minutes&table=walks"/>
     </div>
     <div class="span5">
-        <img src="http://localhost/walkingstats/basic/line.php?title=Distance_km&height=300&width=450&xaxis=date&yaxis=distance_km&table=walks"/>
+        <img src="<?echo $HOSTURL?>/line.php?title=Distance_km&height=300&width=450&xaxis=date&yaxis=distance_km&table=walks"/>
     </div>
 
 </div>
 <div class="row">
     <div class="span5">
-    <img src="http://localhost/walkingstats/basic/pieplaces.php?title=Places+Walked&height=300&width=450">    
+    <img src="<?echo $HOSTURL?>/pieplaces.php?title=Places+Walked&height=300&width=450">    
     </div>
     <div class="span5">
-        <img src="http://localhost/walkingstats/basic/line.php?title=Speed&height=300&width=450&xaxis=date&yaxis=speed&table=walks"/>
+        <img src="<?echo $HOSTURL?>/line.php?title=Speed&height=300&width=450&xaxis=date&yaxis=speed&table=walks"/>
     </div>
 
 </div>
