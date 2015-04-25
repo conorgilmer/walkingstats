@@ -4,11 +4,6 @@
     $db =  mysql_connect($dbhost,$dblogin,$dbpwd);
     mysql_select_db($dbname);    
 	
-    $day = date('d');
-    $month = date('m');
-    $lastMonth = (string)($month-1);	
-    $lastMonth = strlen($month - 1) == 1? '0'.$lastMonth : $lastMonth;
- 
     $SQLString = "SELECT places.name as place, COUNT(walks.id) as cnt FROM `places` LEFT JOIN `walks` ON places.id = walks.place GROUP BY places.id;";
 
     $result = mysql_query($SQLString);    
