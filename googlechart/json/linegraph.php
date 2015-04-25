@@ -17,9 +17,11 @@ $queryData = mysql_query("
 $table = array();
 $table['cols'] = array(
     array('label' => 'Date', 'type' => 'string'),
-    array('label' => 'minutes', 'type' => 'number'),
-    array('label' => 'distance', 'type' => 'number')
+    array('label' => 'minutes', 'type' => 'number')
 );
+//,
+ //   array('label' => 'distance', 'type' => 'number')
+//);
 
 //First Series
 $rows = array();
@@ -30,7 +32,7 @@ while($r = mysql_fetch_assoc($queryData)) {
 
 	//Values of the each slice
 	$temp[] = array('v' => (float) $r['minutes']); 
-	$temp[] = array('v' => (float) $r['distance_km']); 
+//	$temp[] = array('v' => (float) $r['distance_km']); 
 	$rows[] = array('c' => $temp);
 }
 
@@ -54,7 +56,7 @@ $jsonTable = json_encode($table);
 			// Create our data table out of JSON data loaded from server.
 			var data = new google.visualization.DataTable(<?=$jsonTable?>);
 			var options = {
-				title: 'Performance',
+				title: 'Walking Time',
 				width: 800,
 				height: 600
 			};
