@@ -1,0 +1,9 @@
+*~
+config.php
+*.zip
+*.gz
+*.toc
+*.aux
+*.o
+*.exe
+*.dvi

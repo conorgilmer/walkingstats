@@ -1,0 +1,14 @@
+{
+  "cols": [
+        {"id":"","label":"Topping","pattern":"","type":"string"},
+        {"id":"","label":"Slices","pattern":"","type":"number"}
+      ],
+  "rows": [
+        {"c":[{"v":"FF","f":null},{"v":19,"f":null}]},
+        {"c":[{"v":"FG","f":null},{"v":72,"f":null}]},
+        {"c":[{"v":"LAB","f":null},{"v":33,"f":null}]},
+        {"c":[{"v":"SF","f":null},{"v":14,"f":null}]},
+        {"c":[{"v":"Ss","f":null},{"v":13,"f":null}]},
+        {"c":[{"v":"IND","f":null},{"v":20,"f":null}]}
+      ]
+}
