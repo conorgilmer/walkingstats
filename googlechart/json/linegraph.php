@@ -57,8 +57,8 @@ $jsonTable = json_encode($table);
 			var data = new google.visualization.DataTable(<?=$jsonTable?>);
 			var options = {
 				title: 'Walking Time',
-				width: 800,
-				height: 600
+				width: 500,
+				height: 300
 			};
 			// Instantiate and draw our chart, passing in some options.
 			var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
