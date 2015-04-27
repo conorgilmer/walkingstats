@@ -4,8 +4,6 @@
     $db =  mysql_connect($dbhost,$dblogin,$dbpwd);
     mysql_select_db($dbname);    
 	
-    $SQLString = "SELECT places.name as place, COUNT(walks.id) as cnt FROM `places` LEFT JOIN `walks` ON places.id = walks.place GROUP BY places.id;";
-
 // The Chart table contain two fields: Date and PercentageChange
 $queryData = mysql_query("
 	SELECT
