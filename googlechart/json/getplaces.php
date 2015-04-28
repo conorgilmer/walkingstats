@@ -1,4 +1,5 @@
 <?php
+//import config details
    include('config.php');
      
     $db =  mysql_connect($dbhost,$dblogin,$dbpwd);
