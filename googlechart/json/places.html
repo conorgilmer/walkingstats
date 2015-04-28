@@ -1,5 +1,10 @@
 <html>
   <head>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/jumbotron-narrow.css" rel="stylesheet">
+
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -30,7 +35,30 @@
   </head>
 
   <body>
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li class="active"><a href="alllines.html">Line Stats</a></li>
+          <li class="active"><a href="places.html">Places</a></li>
+        </ul>
+        <h3 class="text-muted">Walks Stats</h3>
+      </div>
+
+      <div class="jumbotron">
+
     <!--Div that will hold the pie chart-->
     <div id="chart_div"></div>
+
+   </div>
+
+      <div class="footer">
+        <p>&copy; Conor Gilmer 2015<br>
+        <em><a href="mailto:conor.gilmer@gmail.com">conor.gilmer@gmail.com</a></em></p>
+      </div>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
