@@ -94,3 +94,9 @@ include (TEMPLATE_PATH . "/public/header.html");
 
     
     </div><!--  end container -->
+
+
+
+<?php include (TEMPLATE_PATH . "/public/footer.html"); ?>
+
+
